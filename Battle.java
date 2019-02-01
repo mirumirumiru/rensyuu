@@ -10,13 +10,13 @@ public class Battle {
 		Scanner sc = new Scanner(System.in);
 		Random rnd = new Random();
 
-		int num = 0;//コマンドの番号取得用
-		int attack1 = 0;//javaで攻撃した時のダメージ
-		int attack2 = 0;//pythonで攻撃した時のダメージ
-		int attack3 = 0;//PLCで攻撃した時のダメージ
-		int uedahp = 100;//上田先生のHP
-		int kachohp = 100;//課長のHP
-		int kachoat = 0;//課長の攻撃
+		int num = 0;// コマンドの番号取得用
+		String attack1 = "";// 攻撃する時のコマンド
+		int attack2 = 0;// 課長が受けるダメージ
+		String attack3 = "";// 課長が攻撃する技
+		int uedahp = 100;// 上田先生のHP
+		int kachohp = 100;// 課長のHP
+		int kachoat = 0;// 課長の攻撃
 
 		System.out.println("＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊");
 		System.out.println("＊＊　　　　　　　　　　　　　　＊＊");
@@ -35,45 +35,42 @@ public class Battle {
 			num = sc.nextInt();
 
 			if (num == 1) {
-				attack1 = (rnd.nextInt(10) + 1) * 2;
-				System.out.println("\n上田先生のJavaで攻撃！！");
-				System.out.println("水島訓練課長に" + attack1 + "のダメージをあたえた！！\n");
-				kachohp = kachohp - attack1;
+				attack1 = "Java";
+				attack2 = (rnd.nextInt(10) + 1) * 2;
+				attack3 = "パワハラ";
 				kachoat = (rnd.nextInt(10) + 1) * 2;
-				System.out.println("水島訓練課長のパワハラ！！");
-				System.out.println("上田先生は" + kachoat + "のダメージをうけた！！\n");
-				uedahp = uedahp - kachoat;
-				//System.out.println("上田先生の残りHP：" + uedahp);
-				//System.out.println("水島訓練課長の残りHP：" + kachohp + "\n");
 
 			} else if (num == 2) {
+				attack1 = "python";
 				attack2 = (rnd.nextInt(10) + 1) * 3;
-				System.out.println("\n上田先生のpythonで攻撃！！");
-				System.out.println("水島訓練課長に" + attack2 + "のダメージをあたえた！！\n");
-				kachohp = kachohp - attack2;
+				attack3 = "セクハラ";
 				kachoat = (rnd.nextInt(10) + 1) * 3;
-				System.out.println("水島訓練課長のセクハラ！！");
-				System.out.println("上田先生は" + kachoat + "のダメージをうけた！！\n");
-				uedahp = uedahp - kachoat;
-				//System.out.println("上田先生の残りHP：" + uedahp);
-				//System.out.println("水島訓練課長の残りHP：" + kachohp + "\n");
 
 			} else if (num == 3) {
-				attack3 = (rnd.nextInt(50) + 1) * 1;
-				System.out.println("\n上田先生のPLCで攻撃！！");
-				System.out.println("水島訓練課長に" + attack3 + "のダメージをあたえた！！\n");
-				kachohp = kachohp - attack3;
+				attack1 = "PLC";
+				attack2 = (rnd.nextInt(50) + 1) * 1;
+				attack3 = "「今晩付き合え」攻撃";
 				kachoat = (rnd.nextInt(50) + 1) * 1;
-				System.out.println("水島訓練課長の「今晩付き合え」攻撃！！");
-				System.out.println("上田先生は" + kachoat + "のダメージをうけた！！\n");
-				uedahp = uedahp - kachoat;
-				//System.out.println("上田先生の残りHP：" + uedahp);
-				//System.out.println("水島訓練課長の残りHP：" + kachohp + "\n");
+
 			} else {
 				System.out.println("\n上田先生はみんなを捨てて退職した");
 				break;
+
 			}
 
+			System.out.println("\n上田先生の" + attack1 + "で攻撃！！");
+			kachohp = kachohp - attack2;
+			System.out.println("水島訓練課長に" + attack2 + "のダメージをあたえた！！\n");
+
+			// 訓練課長の体力があるときだけ反撃を行う
+			if (kachohp > 0) {
+				System.out.println("水島訓練課長の" + attack3 + "！！");
+				System.out.println("上田先生は" + kachoat + "のダメージをうけた！！\n");
+				uedahp = uedahp - kachoat;
+			}
+
+			System.out.println("上田先生の残りHP：" + uedahp);
+			System.out.println("水島訓練課長の残りHP：" + kachohp + "\n");
 		}
 
 		if (kachohp <= 0) {
