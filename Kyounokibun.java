@@ -43,15 +43,19 @@ public class Kyounokibun {
 		int x = (int) (Math.random() * 10) + 1; //文字列が出力される数
 		int[] xList = new int[x]; // 要素数xの配列を作成
 
-		int wariais = 100; //まずはここで100を確保しておきます
+		int r = 100 - x ; //各項目に1を確保。 割合の残り。
+		int p; //乱数用
 
-		//ここはwariaisが0になるまで繰り返す。という意味
-		while (wariais-- > 0) {
-			//まずここで
-			//次回以降はwariaisが負数にならないようにランダムで値を決める必要がある
-			int xAt = (int) (rnd.nextInt(xList.length));
-			xList[xAt] += 1; // 要素を1ずつ割り振っていく
+		for(int i=0; i<x; i++) {
+			if(i < x-1) {//最後の1回以外
+				p = rnd.nextInt(r+1); //0～rの乱数を出す
+				xList[i] = p+1; //
+				r = r -p; //次の乱数用に今回の分を引く
+			} else {
+				xList[i] = r+1; //最後の1回はあまりを全部入れる
+			}
 		}
+
 
 		System.out.println("\n" + line + " なんて恥ずかしくて呼べない(/∀＼*))" + "\n");
 		System.out.println("そんな " + line + " 先輩の今日の気分は・・・" + "\n");
