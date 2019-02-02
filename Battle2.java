@@ -226,6 +226,8 @@ public class Battle2 {
 
 				if (syochohp <= 0) {
 					System.out.println("上田先生は所長を倒した！！");
+					winOrLose = 0;
+					break outer;
 				} else if (uedahp <= 0) {
 					System.out.println("上田先生は力尽きた・・・");
 					winOrLose = 1;
@@ -239,6 +241,7 @@ public class Battle2 {
 
 			if (winOrLose == 0) {
 				System.out.println("ものづくりプログラム課は守られた！！");
+				break outer2;
 			} else {
 				System.out.print("コンティニューしますか？　　はい：1　いいえ：2  ");
 				int x = sc.nextInt();
