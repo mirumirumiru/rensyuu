@@ -19,7 +19,7 @@ public class Battle2 {
 		System.out.println("＊＊　　　　　　　　　　　　　　＊＊");
 		System.out.println("＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊\n");
 
-		outer2:for (int i = 0; i <= con; i++) {
+		outer2:while (con<=3) {
 
 			int num = 0;//コマンドの番号取得用
 			String attack1 = "";//攻撃方法
@@ -251,6 +251,10 @@ public class Battle2 {
 					break outer2;
 				}
 			}
+		}
+
+		if(con>3) {
+			System.out.println("\nもうこれ以上コンティニューできません");
 		}
 		sc.close();
 
