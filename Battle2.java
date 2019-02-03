@@ -5,6 +5,9 @@ import java.util.Scanner;
 
 public class Battle2 {
 
+	// 会心の一撃で加算するダメージ
+	public static int criticalDamage = 40;
+
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
@@ -70,10 +73,7 @@ public class Battle2 {
 					//上田先生の攻撃結果
 					System.out.println("\n上田先生は、" + attack1);
 
-					if (new Random().nextInt(5) == 2) {
-				          attack2 = attack2 + 40;
-				          System.out.println("会心の一撃！！");
-				        }
+					attack2 = criticalHantei(attack2);
 
 					kachohp = kachohp - attack2;
 					System.out.println("水島訓練課長に" + attack2 + "のダメージをあたえた！！\n");
@@ -217,10 +217,7 @@ public class Battle2 {
 					//上田先生の攻撃結果
 					System.out.println("\n上田先生は、" + attack1);
 
-					if (new Random().nextInt(5) == 2) {
-				          attack2 = attack2 + 40;
-				          System.out.println("会心の一撃！！");
-				        }
+					attack2 = criticalHantei(attack2);
 
 					syochohp = syochohp - attack2;
 					System.out.println("所長に" + attack2 + "のダメージをあたえた！！\n");
@@ -273,6 +270,18 @@ public class Battle2 {
 
 	}
 
+	/*
+	 * クリティカルヒットの処理。
+	 * 20%の割合でダメージ値を+40する
+	 */
+	public static int criticalHantei(int baseDamage) {
+		Random rnd = new Random();
+		if (rnd.nextInt(5) == 2) {
+			System.out.println("会心の一撃！！"); // クリティカルが出たらメッセージを表示する
+			return baseDamage + criticalDamage; // 補正する値。
+		}
+		return baseDamage;
+	}
 
 	public static int kachoAttack2(int kachoPercent) {
 
