@@ -51,7 +51,7 @@ public class Battle2 {
 						attack2 = (rnd.nextInt(10) + 1) * 3;
 					} else if (num == 3) {
 						attack1 = "よもぎ大福を食べた！！";
-						attack2 = (rnd.nextInt(30) + 1) * 2;
+						attack2 = (rnd.nextInt(20) + 1) * 5;
 						System.out.println("\n上田先生は" + attack1);
 						System.out.println("上田先生はHPが" + attack2 + "回復した！！\n");
 						uedahp = uedahp + attack2;
@@ -66,8 +66,15 @@ public class Battle2 {
 						break;
 					}
 
+
 					//上田先生の攻撃結果
 					System.out.println("\n上田先生は、" + attack1);
+
+					if (new Random().nextInt(5) == 2) {
+				          attack2 = attack2 + 40;
+				          System.out.println("会心の一撃！！");
+				        }
+
 					kachohp = kachohp - attack2;
 					System.out.println("水島訓練課長に" + attack2 + "のダメージをあたえた！！\n");
 
@@ -122,7 +129,7 @@ public class Battle2 {
 						attack1 = "pythonで攻撃！！";
 					} else if (num == 3) {
 						attack1 = "よもぎ大福を食べた！！";
-						attack2 = (rnd.nextInt(30) + 1) * 2;
+						attack2 = (rnd.nextInt(20) + 1) * 5;
 						System.out.println("\n上田先生は" + attack1);
 						System.out.println("上田先生はHPが" + attack2 + "回復した！！\n");
 						uedahp = uedahp + attack2;
@@ -192,7 +199,7 @@ public class Battle2 {
 						attack2 = (rnd.nextInt(10) + 1) * 3;
 					} else if (num == 3) {
 						attack1 = "よもぎ大福を食べた！！";
-						attack2 = (rnd.nextInt(30) + 1) * 2;
+						attack2 = (rnd.nextInt(20) + 1) * 5;
 						System.out.println("\n上田先生は" + attack1);
 						System.out.println("上田先生はHPが" + attack2 + "回復した！！\n");
 						uedahp = uedahp + attack2;
@@ -209,6 +216,12 @@ public class Battle2 {
 
 					//上田先生の攻撃結果
 					System.out.println("\n上田先生は、" + attack1);
+
+					if (new Random().nextInt(5) == 2) {
+				          attack2 = attack2 + 40;
+				          System.out.println("会心の一撃！！");
+				        }
+
 					syochohp = syochohp - attack2;
 					System.out.println("所長に" + attack2 + "のダメージをあたえた！！\n");
 
@@ -259,6 +272,7 @@ public class Battle2 {
 		sc.close();
 
 	}
+
 
 	public static int kachoAttack2(int kachoPercent) {
 
