@@ -21,4 +21,19 @@ public class Family {
         person.age = person.age+30;
         System.out.println("30年後は"+ person.age + "ですね");
     }
+    
+	public int getAge() {
+		return person.age;
+	}
+
+	// FamilyのPersonでsetAgeを実行
+	public void addingAge(int n) {
+		person.addingAge(n);
+	}
+
+	public Family(String familyName, String personName, int personAge) {
+		this.name = familyName;
+		this.person = new Person(personName, personAge);
+	}
+
 }
