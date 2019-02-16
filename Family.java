@@ -18,5 +18,7 @@ public class Family {
         Person person = new Person("太郎", 50);
         Family tanaka = new Family("田中",person);
         tanaka.displayPrint();
+        person.age = person.age+30;
+        System.out.println("30年後は"+ person.age + "ですね");
     }
 }
