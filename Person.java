@@ -11,6 +11,10 @@ public class Person {
     void displayPrint() {
         System.out.println("家族：name=" + name + ", age=" + age);
     }
+    
+    public void addingAge(int n) {
+        this.age += n;
+    }
 
     public static void main(String[] args) {
         Person perosen1 = new Person("太郎", 20);
