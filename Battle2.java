@@ -5,6 +5,9 @@ import java.util.Scanner;
 
 public class Battle2 {
 
+	// 会心の一撃で加算するダメージ
+	public static int criticalDamage = 40;
+
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
@@ -66,17 +69,8 @@ public class Battle2 {
 						break;
 					}
 
-
 					//上田先生の攻撃結果
-					System.out.println("\n上田先生は、" + attack1);
-
-					if (new Random().nextInt(5) == 2) {
-				          attack2 = attack2 + 40;
-				          System.out.println("会心の一撃！！");
-				        }
-
-					kachohp = kachohp - attack2;
-					System.out.println("水島訓練課長に" + attack2 + "のダメージをあたえた！！\n");
+					kachohp -= uedaAttack(attack1, attack2, "水島訓練課長");
 
 					//課長の体力がある時だけ反撃する
 					if (kachohp > 0) {
@@ -215,15 +209,7 @@ public class Battle2 {
 					}
 
 					//上田先生の攻撃結果
-					System.out.println("\n上田先生は、" + attack1);
-
-					if (new Random().nextInt(5) == 2) {
-				          attack2 = attack2 + 40;
-				          System.out.println("会心の一撃！！");
-				        }
-
-					syochohp = syochohp - attack2;
-					System.out.println("所長に" + attack2 + "のダメージをあたえた！！\n");
+					kachohp -= uedaAttack(attack1, attack2, "所長");
 
 					//課長の体力がある時だけ反撃する
 					if (syochohp > 0) {
@@ -273,6 +259,26 @@ public class Battle2 {
 
 	}
 
+	/*
+	 * クリティカルヒットの処理。
+	 * 20%の割合でダメージ値を+40する
+	 */
+	public static int uedaAttack(String attack1, int attack2, String enemyName) {
+		System.out.println("\n上田先生は、" + attack1);
+
+		int attackValue; // 与えるダメージ
+
+		Random rnd = new Random();
+		if (rnd.nextInt(5) == 2) {
+			System.out.println("会心の一撃！！"); // クリティカルが出たらメッセージを表示する
+			attackValue = attack2 + criticalDamage; // 補正する値。
+		} else {
+			attackValue = attack2;
+		}
+
+		System.out.println(enemyName + "に" + attackValue + "のダメージをあたえた！！\n");
+		return attackValue;
+	}
 
 	public static int kachoAttack2(int kachoPercent) {
 
